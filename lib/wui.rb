@@ -1,5 +1,6 @@
 # Ruby 1.9.3
 require 'dl/import'
+require './easing'
 
 module Wui
 
@@ -66,6 +67,7 @@ module Wui
   end
 
   class Mouse
+
     def getPos
       lpP=" "*8
       Wui.GetCursorPos(lpP)
@@ -78,6 +80,14 @@ module Wui
       self
     end
 
+    alias warp setPos
+    alias to setPos
+
+    def move(dx, dy)
+      easePos(dx, dy, false)
+      self
+    end
+
     def click
       mouseEvent(0x0002) # MOUSEEVENTF_LEFTDOWN
       sleep 0.2
@@ -86,6 +96,20 @@ module Wui
     end
 
     private
+
+    def easePos(x, y, abs=true)
+      d = 20
+      from = getPos
+      if abs
+        xm = (0..d).map { |t| Easing.ease_in_out_expo(t, from[:x], x-from[:x], d) }
+        ym = (0..d).map { |t| Easing.ease_in_out_expo(t, from[:y], y-from[:y], d) }
+      else
+        xm = (0..d).map { |t| Easing.ease_in_out_expo(t, from[:x], x, d) }
+        ym = (0..d).map { |t| Easing.ease_in_out_expo(t, from[:y], y, d) }
+      end
+      (0..d).map { |t| sleep 0.01; Wui.SetCursorPos(xm[t], ym[t]) }
+      self
+    end
 
     def mouseEvent(event, x=0, y=0, w=0)
       Wui.mouse_event(event, x, y, w, 0)

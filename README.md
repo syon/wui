@@ -1,10 +1,22 @@
-Wui
-===
+# Wui
 
-control Windows User Interface with Ruby.
+Windows UI controls for Ruby
 
-Usage
------
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'wui'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install wui
+
+## Usage
 
 ```ruby
 require './wui'
@@ -31,7 +43,7 @@ m.to(100, 100) # alias setPos
 m.move(50, 50) # Relative X, Y
 
 # Method Chain
-m.to(0,0).click.to(200, 0).click.move(0, 200).move(200, 0).move(0, 200)
+m.to(0, 0).click.to(200, 0).click.move(0, 200).move(200, 0).move(0, 200)
 
 # o
 (-180).step(180, 10).each do |i|
@@ -40,3 +52,11 @@ m.to(0,0).click.to(200, 0).click.move(0, 200).move(200, 0).move(0, 200)
   m.move(x, y)
 end
 ```
+
+## Contributing
+
+1. Fork it ( http://github.com/<my-github-username>/wui/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request

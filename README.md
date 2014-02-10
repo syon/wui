@@ -19,7 +19,7 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-require './wui'
+require 'wui'
 
 # Window Control
 w = Wui::Window.new

@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["syon.xiii@gmail.com"]
   spec.summary       = %q{Windows UI controls for Ruby}
   spec.description   = %q{}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/syon/wui"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

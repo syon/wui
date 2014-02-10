@@ -1,6 +1,6 @@
-# Ruby 1.9.3
+require "wui/version"
 require 'dl/import'
-require './easing'
+require 'easing'
 
 module Wui
 
